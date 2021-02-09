@@ -54,7 +54,7 @@ public class Application {
 
 			// On exécute l'option correspondant au choix de l'utilisateur
 			
-			
+			 
 			
 			switch (choix) {
 			case 1:
