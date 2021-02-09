@@ -12,6 +12,7 @@ import fr.diginamic.recensement.services.RechercheRegionsPlusPeuplees;
 import fr.diginamic.recensement.services.RechercheVillesPlusPeupleesDepartement;
 import fr.diginamic.recensement.services.RechercheVillesPlusPeupleesFrance;
 import fr.diginamic.recensement.services.RechercheVillesPlusPeupleesRegion;
+import fr.diginamic.recensement.services.exception.ExceptionFormat;
 import fr.diginamic.recensement.utils.RecensementUtils;
 
 /**
@@ -26,7 +27,7 @@ public class Application {
 	 * 
 	 * @param args arguments (non utilisés ici)
 	 */
-	public static void main(String[] args) {
+	public static void main(String[] args) throws ExceptionFormat {
 		Scanner scanner = new Scanner(System.in);
 
 		String filePath = ClassLoader.getSystemClassLoader().getResource("recensement.csv").getFile();
@@ -39,6 +40,7 @@ public class Application {
 
 		// Menu
 		int choix = 0;
+	
 		do {
 
 			// Affichage du menu
@@ -51,6 +53,9 @@ public class Application {
 			choix = Integer.parseInt(choixMenu);
 
 			// On exécute l'option correspondant au choix de l'utilisateur
+			
+			
+			
 			switch (choix) {
 			case 1:
 				RecherchePopulationVilleService rechercheVille = new RecherchePopulationVilleService();
@@ -65,8 +70,13 @@ public class Application {
 				rechercheRegion.traiter(recensement, scanner);
 				break;
 			case 4:
+				try {
 				RecherchePopulationBorneService recherchePopBorne = new RecherchePopulationBorneService();
 				recherchePopBorne.traiter(recensement, scanner);
+				}
+				catch (ExceptionFormat e) {
+					System.err.println(e.getMessage());
+				}
 				break;
 			case 5:
 				RechercheVillesPlusPeupleesDepartement rechercheVillesPlusPeupleesDepartement = new RechercheVillesPlusPeupleesDepartement();
