@@ -70,7 +70,7 @@ public class Application {
 				rechercheRegion.traiter(recensement, scanner);
 				break;
 			case 4:
-				try {
+				try { 
 				RecherchePopulationBorneService recherchePopBorne = new RecherchePopulationBorneService();
 				recherchePopBorne.traiter(recensement, scanner);
 				}

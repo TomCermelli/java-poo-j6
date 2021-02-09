@@ -70,7 +70,7 @@ public class RecherchePopulationBorneService extends MenuService {
 
 		int min = Integer.parseInt(saisieMin) * 1000;
 		int max = Integer.parseInt(saisieMax) * 1000;
- 
+  
 		List<Ville> villes = rec.getVilles();
 		for (Ville ville : villes) {
 			if (ville.getCodeDepartement().equalsIgnoreCase(choix)) {
