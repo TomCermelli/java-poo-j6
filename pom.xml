@@ -5,11 +5,11 @@
 	<groupId>fr.diginamic</groupId>
 	<artifactId>java-poo-j6</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	
+
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
-	
+
 	<build>
 		<plugins>
 			<plugin>
@@ -37,6 +37,14 @@
 			<artifactId>commons-lang3</artifactId>
 			<version>3.10</version>
 		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>8.0.23</version>
+		</dependency>
+
 
 
 	</dependencies>

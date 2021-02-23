@@ -1,5 +1,6 @@
 package fr.diginamic.recensement;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 import fr.diginamic.recensement.entites.Recensement;
@@ -26,10 +27,18 @@ public class Application {
 	 * Point d'entrée
 	 * 
 	 * @param args arguments (non utilisés ici)
+	 * @throws IOException 
 	 */
-	public static void main(String[] args) throws ExceptionFormat {
+	public static void main(String[] args) throws ExceptionFormat, IOException {
+		Alimentation alimentation = new Alimentation();
+		//alimentation.getConnection();
+		//alimentation.insertVille();
+		alimentation.insertRegion();
+		
 		Scanner scanner = new Scanner(System.in);
-
+		
+	
+	
 		String filePath = ClassLoader.getSystemClassLoader().getResource("recensement.csv").getFile();
 		Recensement recensement = RecensementUtils.lire(filePath);
 
@@ -40,7 +49,7 @@ public class Application {
 
 		// Menu
 		int choix = 0;
-	
+
 		do {
 
 			// Affichage du menu
@@ -53,13 +62,11 @@ public class Application {
 			choix = Integer.parseInt(choixMenu);
 
 			// On exécute l'option correspondant au choix de l'utilisateur
-			
-			 
-			
+
 			switch (choix) {
 			case 1:
 				RecherchePopulationVilleService rechercheVille = new RecherchePopulationVilleService();
-				rechercheVille.traiter(recensement, scanner);
+				rechercheVille.traiter(recensement, scanner); // GOOD
 				break;
 			case 2:
 				RecherchePopulationDepartementService rechercheDept = new RecherchePopulationDepartementService();
@@ -70,11 +77,10 @@ public class Application {
 				rechercheRegion.traiter(recensement, scanner);
 				break;
 			case 4:
-				try { 
-				RecherchePopulationBorneService recherchePopBorne = new RecherchePopulationBorneService();
-				recherchePopBorne.traiter(recensement, scanner);
-				}
-				catch (ExceptionFormat e) {
+				try {
+					RecherchePopulationBorneService recherchePopBorne = new RecherchePopulationBorneService();
+					recherchePopBorne.traiter(recensement, scanner);
+				} catch (ExceptionFormat e) {
 					System.err.println(e.getMessage());
 				}
 				break;
@@ -103,7 +109,6 @@ public class Application {
 		} while (choix != 99);
 
 		scanner.close();
-
 	}
 
 	/**

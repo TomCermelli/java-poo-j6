@@ -25,7 +25,7 @@ public class ParseurVille {
 		int populationTotale = Integer.parseInt(population.replace(" ", "").trim());
 		
 		// On cree maintenant la ville avec toutes ses données
-		Ville ville = new Ville(codeRegion, nomRegion, codeDepartement, codeCommune, nomCommune, populationTotale);
+		Ville ville = new Ville(codeRegion, codeDepartement, nomCommune, populationTotale);
 		
 		// On ajoute la ville é la liste des villes du recensement
 		recensement.getVilles().add(ville);
